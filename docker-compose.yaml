@@ -1,0 +1,33 @@
+version: '3'
+services:
+
+  #datadog-agent service?
+
+
+  client:
+    image: openjdk:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./client-crud/target/client-crud-0.0.1-SNAPSHOT.jar:/app/client-crud-0.0.1-SNAPSHOT.jar
+      - ./dd-java-agent.jar:/app/dd-java-agent.jar
+    command: java -jar /app/client-crud-0.0.1-SNAPSHOT.jar 
+    #command with DD tracing ?
+    #labels?
+    #Env variables
+    
+  
+  product:
+    image: openjdk:latest
+    ports:
+      - "8082:8082"
+    volumes:
+      - ./product-crud/target/productcrud-0.0.1-SNAPSHOT.jar:/app/product-crud-0.0.1-SNAPSHOT.jar
+      - ./dd-java-agent.jar:/app/dd-java-agent.jar
+    command: java -jar /app/product-crud-0.0.1-SNAPSHOT.jar #DD commands
+    #command with DD tracing ?
+    #labels?
+    #Env variables
+
+ 
+ 
